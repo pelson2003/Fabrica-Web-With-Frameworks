@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+
+	<tx:annotation-driven />
+
+	
+	<context:component-scan base-package="br.com.fabricadeprogramador.dao"></context:component-scan>
+
+	<context:component-scan base-package="br.com.fabricadeprogramador.service"></context:component-scan>
+
+	<context:component-scan base-package="br.com.fabricadeprogramador.controller"></context:component-scan>
+
+	<context:component-scan base-package="br.com.fabricadeprogramador.converter"></context:component-scan>
+
+	<context:component-scan base-package="br.com.fabricadeprogramador.validator"></context:component-scan>
+
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManageFactory"></property>
+	</bean>
+
+	<!-- Criador de Factory e ajustando hibernate -->
+	<bean id="entityManageFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="persistenceUnitName" value="fabricawebdb2"></property>
+		<property name="jpaVendorAdapter">
+
+			<!-- Configuração do Hibernate -->
+
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="generateDdl" value="true"></property>
+				<property name="showSql" value="true"></property>
+				<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect"></property>
+
+			</bean>
+
+		</property>
+	</bean>
+
+	<!-- Configuração da DataSource, informacoes do Banco, user, senha -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver"></property>
+		<property name="username" value="postgres"></property>
+		<property name="password" value="06122014"></property>
+		<property name="url"
+			value="jdbc:postgresql://localhost:5432/fabricawebdb2"></property>
+	</bean>
+
+
+
+
+
+	<!-- <bean id="usuario" class="br.com.fabricadeprogramador.entidade.Usuario"> -->
+	<!-- <property name="login" value="newjunit"></property> -->
+	<!-- <property name="nome" value="jao da silva"></property> -->
+	<!-- <property name="senha" value="123"></property> -->
+	<!-- </bean> -->
+
+</beans>

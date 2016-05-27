@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<!--       xmlns:security="http://www.springframework.org/security/tags"> -->
+
+<!-- <header> </header> -->
+
+<body>
+
+	<form method="post" action="j_spring_security_check">
+		Login:
+		<h:inputSecret id="login"></h:inputSecret>
+		Senha:
+		<h:inputText id="senha"></h:inputText>
+		<h:commandButton value="Autenticar"></h:commandButton>
+	</form>
+
+</body>
+
+<!-- 	<ui:composition template=""> -->
+<!-- 	</ui:composition> -->
+</html>
