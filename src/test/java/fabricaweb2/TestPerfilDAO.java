@@ -24,6 +24,7 @@ public class TestPerfilDAO {
 	@Qualifier(value = "perfilDAOJPA")
 	PerfilDAO perfilDAO;
 
+	
 	@Test
 	public void testsalvarPerfil() {
 
